@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #fafafa;
+  color: #1a1a2e;
+}
+
+input:focus {
+  border-color: #c8a96e !important;
+  box-shadow: 0 0 0 3px rgba(200, 169, 110, 0.15);
+}
+
+button:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(200, 169, 110, 0.4);
+}
+
+button {
+  transition: all 0.2s ease;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive: stack on mobile */
+@media (max-width: 768px) {
+  .login-page,
+  .register-page {
+    flex-direction: column !important;
+  }
+}
