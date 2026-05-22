@@ -64,7 +64,22 @@ app.use('/bookings', bookingRouter);
 app.use('/barber/agenda', agendaRouter);
 app.use('/admin', adminRouter);
 
-// --- Error Handler (must be last) ---
+// --- Serve Frontend (SPA) ---
+import path from 'path';
+const frontendPath = path.join(__dirname, '..', '..', 'frontend', 'dist');
+app.use(express.static(frontendPath));
+
+// SPA fallback: any route not matched by API serves index.html
+app.get('*', (_req, res) => {
+  const indexPath = path.join(frontendPath, 'index.html');
+  res.sendFile(indexPath, (err) => {
+    if (err) {
+      res.status(404).json({ success: false, error: { code: 'NOT_FOUND', message: 'Page not found' } });
+    }
+  });
+});
+
+// --- Error Handler (must be last for API routes) ---
 app.use(errorMiddleware);
 
 export default app;

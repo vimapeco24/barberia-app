@@ -1,10 +1,10 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 
 // Always connect directly to the backend API
-// Works in both browser (web) and Capacitor (native)
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+// In production (same origin), use empty string. In dev, use env variable.
+const API_BASE_URL = import.meta.env.VITE_API_URL || '';
 
-console.log('[API] Base URL:', API_BASE_URL);
+console.log('[API] Base URL:', API_BASE_URL || '(same origin)');
 
 const api = axios.create({
   baseURL: API_BASE_URL,

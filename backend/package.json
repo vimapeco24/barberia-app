@@ -4,7 +4,7 @@
   "description": "Backend API for Barbershop Booking System",
   "main": "dist/server.js",
   "scripts": {
-    "build": "npx tsc --skipLibCheck || true",
+    "build": "cd ../frontend && npm install && npm run build && cd ../backend && npx tsc --skipLibCheck || true",
     "start": "npx ts-node --transpile-only src/server.ts",
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "lint": "eslint src/**/*.ts",
